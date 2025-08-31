@@ -1,13 +1,17 @@
 package com.wanli.exception;
 
+import com.wanli.dto.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 全局异常处理器
@@ -51,6 +55,22 @@ public class GlobalExceptionHandler {
         response.put("details", e.getMessage());
         
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+    
+    /**
+     * 处理参数验证异常
+     * 
+     * @param e 参数验证异常
+     * @return 错误响应
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResponse<Void>> handleValidationException(MethodArgumentNotValidException e) {
+        String message = e.getBindingResult().getFieldErrors().stream()
+            .map(FieldError::getDefaultMessage)
+            .collect(Collectors.joining(", "));
+        
+        ApiResponse<Void> response = ApiResponse.error(1001, message);
+        return ResponseEntity.badRequest().body(response);
     }
 
 }
