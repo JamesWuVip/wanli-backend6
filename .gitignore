@@ -48,6 +48,10 @@ build/
 *.iml
 *.ipr
 out/
+
+# Sensitive deployment documentation
+DEPLOYMENT_GUIDE.md
+CLI_CONFIGURATION_SUMMARY.md
 !**/src/main/**/out/
 !**/src/test/**/out/
 
