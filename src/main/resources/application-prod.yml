@@ -35,6 +35,22 @@ spring:
           max-idle: 10
           min-idle: 5
 
+<<<<<<< HEAD
+=======
+  # 邮件配置
+  mail:
+    host: ${SPRING_MAIL_HOST:smtphz.qiye.163.com}
+    port: ${SPRING_MAIL_PORT:465}
+    username: ${SPRING_MAIL_USERNAME:wuning@wanli.ai}
+    password: ${SPRING_MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_SSL_ENABLE:true}
+          auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH:true}
+
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d
 # 服务器配置
 server:
   port: 8080
@@ -71,6 +87,7 @@ management:
       export:
         enabled: true
 
+<<<<<<< HEAD
   # 邮件配置
   mail:
     host: ${SPRING_MAIL_HOST:smtphz.qiye.163.com}
@@ -84,6 +101,8 @@ management:
             enable: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_SSL_ENABLE:true}
           auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH:true}
 
+=======
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d
 # JWT配置
 jwt:
   secret: ${JWT_SECRET:prod-jwt-secret-key-must-be-strong}

@@ -31,6 +31,7 @@ public class SecurityConfig {
             // 禁用CSRF保护（对于REST API通常不需要）
             .csrf(csrf -> csrf.disable())
             
+<<<<<<< HEAD
             // 启用CORS配置
             .cors(cors -> cors.configurationSource(request -> {
                 var corsConfig = new org.springframework.web.cors.CorsConfiguration();
@@ -42,6 +43,8 @@ public class SecurityConfig {
                 return corsConfig;
             }))
             
+=======
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d
             // 配置会话管理为无状态（适用于JWT认证）
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -50,6 +53,7 @@ public class SecurityConfig {
             // 配置授权规则
             .authorizeHttpRequests(authz -> authz
                 // 允许健康检查端点无需认证
+<<<<<<< HEAD
                 .requestMatchers("/health", "/api/health").permitAll()
                 // 允许actuator端点无需认证（开发环境）
                 .requestMatchers("/actuator/**", "/api/actuator/**").permitAll()
@@ -70,3 +74,17 @@ public class SecurityConfig {
         return http.build();
     }
 }
+=======
+                .requestMatchers("/api/health", "/health").permitAll()
+                // 允许actuator端点无需认证（开发环境）
+                .requestMatchers("/api/actuator/**", "/actuator/**").permitAll()
+                // 允许认证相关端点无需认证
+                .requestMatchers("/api/auth/**").permitAll()
+                // 其他所有请求都需要认证
+                .anyRequest().authenticated()
+            );
+            
+        return http.build();
+    }
+}
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d

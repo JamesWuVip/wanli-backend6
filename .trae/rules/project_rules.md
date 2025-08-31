@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 万里后端项目工程实践规范
 
 ## 项目概述
@@ -621,3 +622,11 @@ public class UserServiceImpl implements UserService {
 ---
 
 **注意：本规范应在项目开发过程中严格遵守，定期review和更新，确保代码质量和团队协作效率。**
+=======
+符合spring boot的项目结构和各项spring官方规范，尽可能使用标准组件而不是自定义或第三方组件
+github访问应当使用MCP
+后端部署在railway
+git仓库操作遵循gitflow规范
+dev分支是开发分支，main分支是生产分支，staging分支是测试分支
+dev分支对应的后端服务器、psql数据库都在本地，staging和main分支对应的服务器和数据库环境都在railway上。
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d

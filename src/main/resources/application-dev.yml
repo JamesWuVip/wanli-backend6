@@ -35,6 +35,7 @@ spring:
     livereload:
       enabled: true
 
+<<<<<<< HEAD
 # 服务器配置
 server:
   port: ${SERVER_PORT:8080}
@@ -50,6 +51,8 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
 
+=======
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d
   # 邮件配置
   mail:
     host: ${SPRING_MAIL_HOST:smtphz.qiye.163.com}
@@ -63,6 +66,22 @@ logging:
             enable: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_SSL_ENABLE:true}
           auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH:true}
 
+<<<<<<< HEAD
+=======
+# 服务器配置
+server:
+  port: ${SERVER_PORT:8080}
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.wanli: DEBUG
+    org.springframework.web: debug
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
+>>>>>>> 46918f4a44e598f44cfc9284915f96fdea41398d
 # JWT配置
 jwt:
   secret: ${JWT_SECRET:dev-jwt-secret-key-change-in-production}
