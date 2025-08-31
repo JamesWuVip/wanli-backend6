@@ -44,6 +44,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/actuator/**", "/actuator/**").permitAll()
                 // 允许认证相关端点无需认证
                 .requestMatchers("/api/auth/**").permitAll()
+                // 允许测试端点无需认证（开发环境）
+                .requestMatchers("/test/**").permitAll()
                 // 其他所有请求都需要认证
                 .anyRequest().authenticated()
             );

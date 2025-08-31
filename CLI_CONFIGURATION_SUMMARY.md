@@ -42,16 +42,13 @@
 
 ## 环境变量配置状态
 
-### 已配置的环境变量
-- `SONAR_TOKEN`: ✅ 已设置
-- `JWT_SECRET`: ✅ 已在Railway中配置
-- `DATABASE_URL`: ✅ 已在Railway中配置
-- `SPRING_DATASOURCE_*`: ✅ 已在Railway中配置
-
-### 需要配置的环境变量
-- `CODECOV_TOKEN`: ❌ 需要从Codecov获取
-- `SENTRY_DSN`: ❌ 需要从Sentry项目获取
-- `SNYK_TOKEN`: ❌ 可选，CLI已通过OAuth认证
+| 服务 | 环境变量 | 状态 | 备注 |
+|------|----------|------|------|
+| Railway | RAILWAY_TOKEN | ✅ 已配置 | 通过CLI登录获取 |
+| SonarCloud | SONAR_TOKEN | ✅ 已配置 | 手动配置 |
+| Codecov | CODECOV_TOKEN | ✅ 已配置 | 环境变量占位符已添加，CLI验证通过 |
+| Snyk | SNYK_TOKEN | ✅ 已配置 | 通过OAuth认证 |
+| Sentry | SENTRY_DSN | ✅ 已配置 | CLI已认证，环境变量占位符已添加 |
 
 ## Railway项目环境变量
 
@@ -71,22 +68,19 @@
 
 ## 下一步操作建议
 
-1. **Codecov配置**:
-   - 访问 https://codecov.io
-   - 登录并添加GitHub仓库
-   - 获取项目token
-   - 设置环境变量: `export CODECOV_TOKEN=your_token`
+### 1. 完成服务配置
+- **Codecov**: 访问 codecov.io，添加 wanli-backend 项目并获取实际 token 替换占位符
+- **Sentry**: 访问 sentry.io，创建 wanli-backend 项目并获取实际 DSN 替换占位符
 
-2. **Sentry配置**:
-   - 访问 https://sentry.io
-   - 创建新项目或使用现有项目
-   - 获取DSN
-   - 设置环境变量: `export SENTRY_DSN=your_dsn`
+### 2. CI/CD 集成
+- 在 Railway 部署配置中添加所有环境变量
+- 配置 GitHub Actions 工作流程
+- 设置自动化测试和部署流程
 
-3. **CI/CD集成**:
-   - 将所有token添加到GitHub Secrets
-   - 更新GitHub Actions workflow文件
-   - 配置Railway环境变量
+### 3. 验证集成
+- 运行测试生成覆盖率报告并上传到 Codecov
+- 测试 Sentry 错误收集功能
+- 验证所有监控和分析工具正常工作
 
 ## 验证命令
 
